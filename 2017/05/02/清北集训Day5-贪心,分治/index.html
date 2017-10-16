@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>清北集训Day5 贪心,分治 | Harmoniikaa&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="清北集训Day5 贪心,分治">
+<meta name="keywords" content="清北集训,贪心,分治">
+<meta property="og:type" content="article">
+<meta property="og:title" content="清北集训Day5 贪心,分治">
+<meta property="og:url" content="http://harmoniikaa.top/2017/05/02/清北集训Day5-贪心,分治/index.html">
+<meta property="og:site_name" content="Harmoniikaa&#39;s Blog">
+<meta property="og:description" content="清北集训Day5 贪心,分治">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-14T13:00:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="清北集训Day5 贪心,分治">
+<meta name="twitter:description" content="清北集训Day5 贪心,分治">
+  
+    <link rel="alternate" href="/atom.xml" title="Harmoniikaa&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harmoniikaa&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我们将人生划为诡异的阶段 我们把这个世界表为丰富的状态</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://harmoniikaa.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-清北集训Day5-贪心,分治" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/02/清北集训Day5-贪心,分治/" class="article-date">
+  <time datetime="2017-05-02T00:02:05.000Z" itemprop="datePublished">2017-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      清北集训Day5 贪心,分治
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="清北集训Day5-贪心-分治"><a href="#清北集训Day5-贪心-分治" class="headerlink" title="清北集训Day5 贪心,分治"></a>清北集训Day5 贪心,分治</h1><a id="more"></a>
+<h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h1><h2 id="例3-bzoj-4245"><a href="#例3-bzoj-4245" class="headerlink" title="例3 (bzoj 4245)"></a>例3 (bzoj 4245)</h2><p>按位贪心,发现前缀xor为1的位置不能作为段与段之间的分界点.<br>于是为了保证高位一直最优,可以把不能作为分隔符的位置记录下来,然后每一位更新这个记录,最后何以作为分隔符的位置大于等于m那么一定可行.</p>
+<h2 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h2><p>第二问非常显然.令$f_{i,j}$表示,在不破坏更高位最优答案的情况下,[1,i]的区间内分成j段是否可行.<br>枚举最后一段开始的位置为k,就可以转移.<br>第一问去掉最后一维即可.</p>
+<h1 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h1><h2 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h2><p>时间一维,x一维,y一维,求三维全部小于的点的个数.<br>排序一维,树状数组一维,cdq一维.</p>
+<h2 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h2><p>sol(L,R)表示L到R这段物品没有选时的DP数组.<br>然后递归去做.</p>
+<h2 id="例6"><a href="#例6" class="headerlink" title="例6"></a>例6</h2><p>最小乘积模型.<br>考虑用二维平面上的点便是每一个解.<br>每一个解所对应的答案即为该点所在的反比例函数的k值.<br>最优解一定在凸壳上.<br>先构造两组解,然后分治找距离这两个点所构成的直线的最远点,将凸壳构造出来,每次找到一个最远点更新一下答案.<br>复杂度玄学.</p>
+<h1 id="趣题"><a href="#趣题" class="headerlink" title="趣题"></a>趣题</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>枚举一个T,A与B的代价可以O(1)求出.C的代价也可以O(1)求出.结束.</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>如果n=k,直接从高位到低位贪心.<br>其实发现每个开关都不可能被其他的区间线性表示,所以先用贪心求出需要按下的开关数目,每次可能将需要按的开关数目+1或-1,若$i\leq k$则停止.<br>有方程:<br>$$p<em>i=<br>\begin{cases}<br>i &amp; i\leq k \<br>\frac{i}{n}p</em>{i-1}+\frac{n-i}{n}p_{i+1} &amp; i&gt;k<br>\end{cases}<br>$$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harmoniikaa.top/2017/05/02/清北集训Day5-贪心,分治/" data-id="cj8u1zr4j0018tqxf6wtczlbs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分治/">分治</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/清北集训/">清北集训</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心/">贪心</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/02/清北集训Day5-后缀自动机/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          清北集训Day5 后缀自动机
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/01/清北集训Day4-数据结构/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">清北集训Day4 数据结构</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AC自动机/">AC自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HASH/">HASH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Z-BOX/">Z-BOX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分块/">分块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分治/">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态点分治/">动态点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匈牙利算法/">匈牙利算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博弈论/">博弈论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀数组/">后缀数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀自动机/">后缀自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回文自动机/">回文自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容斥原理/">容斥原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展欧几里得/">拓展欧几里得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓扑排序/">拓扑排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最大流/">最大流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小割/">最小割</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构造/">构造</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树形DP/">树形DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/清北集训/">清北集训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点分治/">点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性基/">线性基</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/费用流/">费用流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/辛普森积分/">辛普森积分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递推/">递推</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AC自动机/" style="font-size: 10px;">AC自动机</a> <a href="/tags/HASH/" style="font-size: 10px;">HASH</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/Z-BOX/" style="font-size: 10px;">Z-BOX</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/动态点分治/" style="font-size: 10px;">动态点分治</a> <a href="/tags/动态规划/" style="font-size: 17.5px;">动态规划</a> <a href="/tags/匈牙利算法/" style="font-size: 10px;">匈牙利算法</a> <a href="/tags/博弈论/" style="font-size: 15px;">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 10px;">后缀数组</a> <a href="/tags/后缀自动机/" style="font-size: 10px;">后缀自动机</a> <a href="/tags/回文自动机/" style="font-size: 12.5px;">回文自动机</a> <a href="/tags/堆/" style="font-size: 10px;">堆</a> <a href="/tags/容斥原理/" style="font-size: 10px;">容斥原理</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/拓展欧几里得/" style="font-size: 10px;">拓展欧几里得</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/数论/" style="font-size: 12.5px;">数论</a> <a href="/tags/最大流/" style="font-size: 10px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/构造/" style="font-size: 10px;">构造</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/模拟/" style="font-size: 15px;">模拟</a> <a href="/tags/清北集训/" style="font-size: 20px;">清北集训</a> <a href="/tags/点分治/" style="font-size: 10px;">点分治</a> <a href="/tags/线性基/" style="font-size: 10px;">线性基</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/莫比乌斯反演/" style="font-size: 10px;">莫比乌斯反演</a> <a href="/tags/计算几何/" style="font-size: 15px;">计算几何</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/费用流/" style="font-size: 10px;">费用流</a> <a href="/tags/辛普森积分/" style="font-size: 10px;">辛普森积分</a> <a href="/tags/递推/" style="font-size: 12.5px;">递推</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/16/GYM-Quest-Form/">GYM Quest Form</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/13/Hackerrank-GCD-Product/">Hackerrank GCD Product</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/11/Codeforces-814E/">Codeforces 814E</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/02/UOJ-103/">UOJ 103</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/02/回文自动机初探/">回文自动机初探</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

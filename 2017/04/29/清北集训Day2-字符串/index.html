@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>清北集训Day2 字符串 | Harmoniikaa&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="清北集训Day2 字符串">
+<meta name="keywords" content="清北集训,AC自动机,后缀数组,Z-BOX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="清北集训Day2 字符串">
+<meta property="og:url" content="http://harmoniikaa.top/2017/04/29/清北集训Day2-字符串/index.html">
+<meta property="og:site_name" content="Harmoniikaa&#39;s Blog">
+<meta property="og:description" content="清北集训Day2 字符串">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-14T13:00:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="清北集训Day2 字符串">
+<meta name="twitter:description" content="清北集训Day2 字符串">
+  
+    <link rel="alternate" href="/atom.xml" title="Harmoniikaa&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harmoniikaa&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我们将人生划为诡异的阶段 我们把这个世界表为丰富的状态</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://harmoniikaa.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-清北集训Day2-字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/29/清北集训Day2-字符串/" class="article-date">
+  <time datetime="2017-04-29T00:02:16.000Z" itemprop="datePublished">2017-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      清北集训Day2 字符串
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="清北集训Day2-字符串"><a href="#清北集训Day2-字符串" class="headerlink" title="清北集训Day2 字符串"></a>清北集训Day2 字符串</h1><a id="more"></a>
+<h2 id="AC自动机基础"><a href="#AC自动机基础" class="headerlink" title="AC自动机基础"></a>AC自动机基础</h2><p>如果当前走到的是s2,想要找一个s1,满足s1是s2的一个后缀.<br>AC自动机fail指针的目的就是找一个比当前的节点更浅的节点,使得目标节点所代表的字符串是当前节点所代表的字符串的一个后缀.</p>
+<h2 id="后缀数组基础"><a href="#后缀数组基础" class="headerlink" title="后缀数组基础"></a>后缀数组基础</h2><p>构造复杂度:<br>$O(n^2logn)$:暴力排序<br>$O(nlog^2n)$:二分+HASH<br>$O(nlogn)$:倍增<br>$O(n)$:DC3,SAM<br>sa[i]:第i小的后缀<br>height[i]:sa[i]与sa[i-1]的最长公共前缀</p>
+<h2 id="Z-BOX基础"><a href="#Z-BOX基础" class="headerlink" title="Z-BOX基础"></a>Z-BOX基础</h2><p>求的是每个后缀与原串的最长公共前缀.<br>令$f_i$代表第i个后缀与原串的最长公共前缀长度.<br>$f_1=|S|$.<br>$f_2$暴力求.<br>有若干j..r[j]与原串的前缀匹配.<br>记录一个能和原串匹配且r[j]最靠右的某一个r[j].<br>所以对于一个新的i,因为j到r[j]和某个前缀一样,所以i一定有一个k(=i-j)可以与之对应使得$f_i\geq min(f_k,r[j]-i)$.和manacher算法类似.</p>
+<h2 id="Problem-0-0"><a href="#Problem-0-0" class="headerlink" title="Problem 0.0:"></a>Problem 0.0:</h2><ul>
+<li>Question:<br>给一个长度为n的字符串,希望你能找到一个最短的串能够循环生成这个串.</li>
+<li>Input:<br>abcabcab</li>
+<li>Output:<br>abc</li>
+<li>Sol:<br>Z-BOX.找到第一个i+f[i]=n的后缀.</li>
+</ul>
+<h2 id="Problem-0-1"><a href="#Problem-0-1" class="headerlink" title="Problem 0.1:"></a>Problem 0.1:</h2><ul>
+<li>Question:<br>给一个长度为n的字符串,希望知道删去哪一个字符后,使得能够循环生成这个串的串的长度最小(也可以不删).</li>
+<li>Input:<br>abcdabcab</li>
+<li>Output:<br>d</li>
+<li>Sol:<br>枚举一个长度,然后暴力去匹配就可以了.因为$\sum{\frac{1}{i}}=\ln n$.可能第一块不对,那么用第二块匹配就可以了.</li>
+</ul>
+<h2 id="Problem-1-bzoj-2746"><a href="#Problem-1-bzoj-2746" class="headerlink" title="Problem 1 (bzoj 2746):"></a>Problem 1 (bzoj 2746):</h2><p>Fail树非常神奇的性质:往上走一定会走到它的一个后缀.求对应的Fail树上的LCA即可.</p>
+<h2 id="Problem-2-bzoj-2754"><a href="#Problem-2-bzoj-2754" class="headerlink" title="Problem 2 (bzoj 2754):"></a>Problem 2 (bzoj 2754):</h2><p>使用AC自动机.换一种想法,我们对所有询问串建一个AC自动机.<br>然后对于每一个原串,在Fail树中询问.<br>每次走到一个点,首先询问从这个点到根的所有点的权值和,然后用一个区间修改把从点到根的路径全部赋值为0,用一个树链剖分去维护它.<br>这样是$O(log^2)$.<br>果然是用一个LCT去替代,就可以做到log了.</p>
+<h2 id="Problem-4"><a href="#Problem-4" class="headerlink" title="Problem 4:"></a>Problem 4:</h2><p>第一段后缀数组贪心.<br>后面两段倒序拷贝一份然后后缀数组找一段连续的最小的即可.</p>
+<h2 id="Problem-5-poj-3376"><a href="#Problem-5-poj-3376" class="headerlink" title="Problem 5 (poj 3376):"></a>Problem 5 (poj 3376):</h2><p>考虑一个串aaaba,如果要找一个比它短的串放在它后面,那么长度一定为2或4,因为最后的若干位一定是自回文的(“a”,”aba”).<br>然后对于每一个长度建两个map,存顺序和逆序哈希就可以了.</p>
+<h2 id="Problem-6-bzoj-3473"><a href="#Problem-6-bzoj-3473" class="headerlink" title="Problem 6 (bzoj 3473):"></a>Problem 6 (bzoj 3473):</h2><p>连在一起建后缀数组,用sliding-window来维护”至少k个字符串”这个量,然后对一个区间取min,用线段树维护.</p>
+<h2 id="a"><a href="#a" class="headerlink" title="a"></a>a</h2><p>p进制展开然后数位DP.</p>
+<h2 id="b"><a href="#b" class="headerlink" title="b"></a>b</h2><p>找循环节然后线段树.</p>
+<h2 id="c"><a href="#c" class="headerlink" title="c"></a>c</h2><p>乱搞.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harmoniikaa.top/2017/04/29/清北集训Day2-字符串/" data-id="cj8u1zr4d000wtqxfx9ad7m16" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AC自动机/">AC自动机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Z-BOX/">Z-BOX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后缀数组/">后缀数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/清北集训/">清北集训</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/30/清北集训Day3-网络流/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          清北集训Day3 网络流
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/28/清北集训Day1-动态规划/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">清北集训Day1 动态规划</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AC自动机/">AC自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HASH/">HASH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Z-BOX/">Z-BOX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分块/">分块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分治/">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态点分治/">动态点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匈牙利算法/">匈牙利算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博弈论/">博弈论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀数组/">后缀数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀自动机/">后缀自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回文自动机/">回文自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容斥原理/">容斥原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展欧几里得/">拓展欧几里得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓扑排序/">拓扑排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最大流/">最大流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小割/">最小割</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构造/">构造</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树形DP/">树形DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/清北集训/">清北集训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点分治/">点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性基/">线性基</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/费用流/">费用流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/辛普森积分/">辛普森积分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递推/">递推</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AC自动机/" style="font-size: 10px;">AC自动机</a> <a href="/tags/HASH/" style="font-size: 10px;">HASH</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/Z-BOX/" style="font-size: 10px;">Z-BOX</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/动态点分治/" style="font-size: 10px;">动态点分治</a> <a href="/tags/动态规划/" style="font-size: 17.5px;">动态规划</a> <a href="/tags/匈牙利算法/" style="font-size: 10px;">匈牙利算法</a> <a href="/tags/博弈论/" style="font-size: 15px;">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 10px;">后缀数组</a> <a href="/tags/后缀自动机/" style="font-size: 10px;">后缀自动机</a> <a href="/tags/回文自动机/" style="font-size: 12.5px;">回文自动机</a> <a href="/tags/堆/" style="font-size: 10px;">堆</a> <a href="/tags/容斥原理/" style="font-size: 10px;">容斥原理</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/拓展欧几里得/" style="font-size: 10px;">拓展欧几里得</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/数论/" style="font-size: 12.5px;">数论</a> <a href="/tags/最大流/" style="font-size: 10px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/构造/" style="font-size: 10px;">构造</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/模拟/" style="font-size: 15px;">模拟</a> <a href="/tags/清北集训/" style="font-size: 20px;">清北集训</a> <a href="/tags/点分治/" style="font-size: 10px;">点分治</a> <a href="/tags/线性基/" style="font-size: 10px;">线性基</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/莫比乌斯反演/" style="font-size: 10px;">莫比乌斯反演</a> <a href="/tags/计算几何/" style="font-size: 15px;">计算几何</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/费用流/" style="font-size: 10px;">费用流</a> <a href="/tags/辛普森积分/" style="font-size: 10px;">辛普森积分</a> <a href="/tags/递推/" style="font-size: 12.5px;">递推</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/16/GYM-Quest-Form/">GYM Quest Form</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/13/Hackerrank-GCD-Product/">Hackerrank GCD Product</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/11/Codeforces-814E/">Codeforces 814E</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/02/UOJ-103/">UOJ 103</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/02/回文自动机初探/">回文自动机初探</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>清北集训Day1 动态规划 | Harmoniikaa&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="清北集训Day1 动态规划">
+<meta name="keywords" content="动态规划,博弈论,清北集训">
+<meta property="og:type" content="article">
+<meta property="og:title" content="清北集训Day1 动态规划">
+<meta property="og:url" content="http://harmoniikaa.top/2017/04/28/清北集训Day1-动态规划/index.html">
+<meta property="og:site_name" content="Harmoniikaa&#39;s Blog">
+<meta property="og:description" content="清北集训Day1 动态规划">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-14T13:00:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="清北集训Day1 动态规划">
+<meta name="twitter:description" content="清北集训Day1 动态规划">
+  
+    <link rel="alternate" href="/atom.xml" title="Harmoniikaa&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Harmoniikaa&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我们将人生划为诡异的阶段 我们把这个世界表为丰富的状态</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://harmoniikaa.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-清北集训Day1-动态规划" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/28/清北集训Day1-动态规划/" class="article-date">
+  <time datetime="2017-04-28T00:04:51.000Z" itemprop="datePublished">2017-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      清北集训Day1 动态规划
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="清北集训Day1-动态规划"><a href="#清北集训Day1-动态规划" class="headerlink" title="清北集训Day1 动态规划"></a>清北集训Day1 动态规划</h1><a id="more"></a>
+<h2 id="数位DP基础"><a href="#数位DP基础" class="headerlink" title="数位DP基础"></a>数位DP基础</h2><p>考虑最简单的数位DP,求$[l,r]$中整数的个数.<br>$[l,r]:r-l+1$<br>$[1,r]:r$<br>将r写成10进制数$r=a_1a_2a_3…a<em>k$<br>设$f</em>{i,0/1}$表示考虑到第i位,小于还是小于等于r.<br>$0:&lt;$<br>$1:\leq$<br>然后转移:<br>$f<em>{i+1,0}+=10f</em>{i,0}$<br>$f<em>{i+1,0}+=(a</em>{i+1}-1)f<em>{i,1}$<br>$f</em>{i+1,1}+=f_{i,1}$</p>
+<h2 id="环套树DP基础"><a href="#环套树DP基础" class="headerlink" title="环套树DP基础"></a>环套树DP基础</h2><p>对于环上每一个点所伸展出的子树做一次DP,然后在环上合并答案.<br>比如求树的直径,枚举环上两点$i,j$,然后$f<em>{i,0}+f</em>{j,0}+dis(i,j)$既是答案.$O(n^2)$,随机情况$O(log^2n)$.<br>或者把链拆开,复制一份,然后用数据结构+sliding window来解决.</p>
+<h2 id="仙人掌DP基础"><a href="#仙人掌DP基础" class="headerlink" title="仙人掌DP基础"></a>仙人掌DP基础</h2><p>对于仙人掌的每一个环进行环上的DP,然后把它看成一个点然后向上传递即可.<br>仙人掌DP是把章鱼DP不断拿来用,章鱼DP是把树形DP不断拿来用.<br>找环:跑一边边双就可以找到所有环.<br>在找出环的同时直接把动态规划给做了.</p>
+<h2 id="插头DP"><a href="#插头DP" class="headerlink" title="插头DP"></a>插头DP</h2><p>概念:<br>轮廓线: 在不断填补缺口,在换行的时候会多出来一个.总共有n<em>m个轮廓线.<br>插头: 跨越某一轮廓线的画出来的线叫做插头.轮廓线上共有$m+1$个位置,可以用$k^{m+1}$来表示某一个位置是否有插头.<br><em>*一个格子一定有两个插头.</em></em></p>
+<p>动态规划的状态一般可以写作$f_{i,j,S}$表示到i,j这个位置的轮廓线,插头状态为S的DP值.<br>转移时从(i,j)转移到(i,j+1)只与(i,j)的S中的第j+1和j+2两项相关.</p>
+<h3 id="Question1-hdu-1693"><a href="#Question1-hdu-1693" class="headerlink" title="Question1 (hdu 1693):"></a>Question1 (hdu 1693):</h3><p>有一个n*m的方格图,你要在里面画一些线,要求:<br>1.它们每一个都是一个环.<br>2.它们覆盖满了整个图.<br>求方案数.</p>
+<p>本题可以直接写作$f_{i,j,S}$,其中S为$2^{m+1}$的一种状态,然后枚举状态转移.</p>
+<h3 id="Question2-ural-1519"><a href="#Question2-ural-1519" class="headerlink" title="Question2 (ural 1519):"></a>Question2 (ural 1519):</h3><p>有一个n<em>m的方格图,你要在里面画一<em>*条</em></em>线,要求:<br>1.它是一个环.<br>2.它覆盖满了整个图.<br>求方案数.</p>
+<p>一个环与一个轮廓线的交点个数一定是偶数个.<br>只考虑轮廓线上面的那一部分环,相连的两个插头分别用左右括号表示.会形成一个合法的括号序列,每一对相匹配的左右括号是相连的.<br>考虑如下两个括号序列来理解:<br>()X(),(())X<br>转移的时候把一个相匹配的左右括号”()”连起来是一种不合法的情况.<br>有两个左括号或两个右括号”((“,”))”也比较难受,因为删去两个相同种类的括号他就不是一个合法的括号序列了.所以两个左括号的做法是找到右边的左括号匹配的右括号,并改成左括号然后转移.两个右括号类似.<br>所以共有八种情况,讨论出来就可以了.<br>状态最好直接预处理出来然后用map把转移哈希起来.</p>
+<h2 id="博弈论DP"><a href="#博弈论DP" class="headerlink" title="博弈论DP"></a>博弈论DP</h2><p>S是必胜态,当且仅当至少有一个走出去的状态为必败态.<br>S是必败态,当且仅当所有走出去的状态都是必胜态.<br>实际上$f<em>S=!(f</em>{S1} \&amp; f<em>{S2} \&amp; f</em>{S3} \&amp; … \&amp; f_{Sk})$.</p>
+<h2 id="Problem-1-bzoj-2595"><a href="#Problem-1-bzoj-2595" class="headerlink" title="Problem 1 (bzoj 2595)"></a>Problem 1 (bzoj 2595)</h2><p>发现这道题用插头DP只需要考虑轮廓线上每个格子选了没有就可以了,所以事实上只需要$2^m$种状态.<br>先考虑一个最直观的想法:$f_{i,j,S}$表示到(i,j)轮廓线上每一个格子与K个需要被选中的格子的联通状态.共有$O(nm2^{mk})$种状态.<br>如果记录每一个格子属于哪一个联通块,因为统一行中两个相邻的格子会联通到一起,状态数即为$O(nm6^m)$级别.<br>会发现这样有非常多的冗余状态,所以可以用最小表示法来优化状态数,每生成一个新状态,用最小表示法重新标号一下,状态数目会极具减小.<br>这样做会稍微TLE.<br>正解是斯坦纳树.</p>
+<h2 id="Problem-2-hdu-5009"><a href="#Problem-2-hdu-5009" class="headerlink" title="Problem 2 (hdu 5009)"></a>Problem 2 (hdu 5009)</h2><p>$O(n^2)$非常简单．<br>考虑答案最大不会超过n,所以如果一段区间中颜色个数超过$\sqrt{n}$个,那么这个区间一定不要选.<br>所以维护$\sqrt{n}$个pointers,表示距离终点分别有$1-\sqrt{n}$种颜色的最左区间,每次加进来新数时直接移动所有pointer,然后维护DP即可.</p>
+<h2 id="Problem-3"><a href="#Problem-3" class="headerlink" title="Problem 3"></a>Problem 3</h2><p>任何一个数都可以表示为$\sum_{i=1}^{N}{x_i \times 1111…1111}$.<br>此时$\sum {x_i}\leq 9$<br>将111..11对于模M分组,即统计模M为0..M-1的各有多少个,设模i的共有$y<em>i$个.<br>令$f</em>{i,j,k}$表示前i组,当前$x<em>i$的和为j,模为k的方案总数.<br>转移考虑对于第i+1组,最多还可以被分配9-j的值r,然后把r拆开分给第i+1组的若干个数,会使余数变成$k+r(i+1)$.<br>实际上问题变成将r拆成$y</em>{i+1}$个数(可以为0)的方案总数.<br>比如说$y<em>{i+1}=5$,$r=3$,此时3可以分成1+1+1,1+2,3三种,然后拿1+2为例,五个数中要选两个分别为1和2.对于每一种拆分的方案总数可以用插版法求.<br>所以说有:<br>$$f</em>{i+1,j+r,k+r(i+1)}+=f<em>{i,j,k}\binom{y</em>{i+1}+r-1}{y_{i+1}-1}$$</p>
+<h2 id="Problem-4-Codechef-SHGAME"><a href="#Problem-4-Codechef-SHGAME" class="headerlink" title="Problem 4 (Codechef SHGAME)"></a>Problem 4 (Codechef SHGAME)</h2><p>实际上是一个4个方向4堆式子的NIM游戏.<br>列出式子为$(x-1)\oplus(n-x)\oplus(y-1)\oplus(m-y)$.<br>前两项和后两项没有关系,开个map统计答案就行.</p>
+<h2 id="Problem-5-bzoj-2757"><a href="#Problem-5-bzoj-2757" class="headerlink" title="Problem 5 (bzoj 2757)"></a>Problem 5 (bzoj 2757)</h2><p>考虑质因数只能为2,3,5,7,然后做两个数位DP(因为乘积可能等于0).</p>
+<h2 id="Problem-5-zoj-2599"><a href="#Problem-5-zoj-2599" class="headerlink" title="Problem 5 (zoj 2599)"></a>Problem 5 (zoj 2599)</h2><p>先用一个DP算出不同长度数字和为i的有多少个.然后再一次数位DP求出小于k的数字和为i的有多少个.</p>
+<h2 id="Problem-6"><a href="#Problem-6" class="headerlink" title="Problem 6"></a>Problem 6</h2><p>最简单的DP.</p>
+<h2 id="Problem-7-bzoj-2331"><a href="#Problem-7-bzoj-2331" class="headerlink" title="Problem 7 (bzoj 2331)"></a>Problem 7 (bzoj 2331)</h2><p>0:无插头.<br>1:插头没转过弯.<br>2:插头在上面转过弯.<br>然后转移.</p>
+<h2 id="Problem-8"><a href="#Problem-8" class="headerlink" title="Problem 8"></a>Problem 8</h2><p>考虑有2M+1种插头,0插头和2M种颜色产生的括号序列.最暴力的做法.<br>正解应该有1+M+2种插头.<br>1:0插头.<br>M:M种颜色.<br>2:无颜色插头.<br>转移:<br>1(:左括号所对应的右括号会变成1.<br>每次一个无颜色和一个有颜色的相连时,将所对应的括号染色.然后DP即可.</p>
+<h2 id="Problem-9-TC-SRM-498-Div1-1000PT"><a href="#Problem-9-TC-SRM-498-Div1-1000PT" class="headerlink" title="Problem 9 (TC SRM 498 Div1 1000PT)"></a>Problem 9 (TC SRM 498 Div1 1000PT)</h2><p>考虑如果没有K种向量不能走的限制,可以直接将x轴与y轴拆开做,因为x与y的行为互不影响.<br>令$f<em>{i,x,y}$表示走i步到(x,y)的方案数,不管有没有不合法的方案.如果拆开就是$f</em>{i,x}\times f<em>{i,y}$来进行DP.<br>令$g</em>{i,z}$表示走i步到(10z,10z)的方案数,只走不合法的方案.<br>考虑$f_{R,Tx,Ty}$,枚举有走一步不合法的方案,可能走的是$k_1,k_2..k<em>K$,会从$f</em>{R-1,Tx-k<em>i,Ty-k}\times R$转移来,当然也可能走两步之类的,然后用容斥原理合并起来．<br>$$ans=\sum</em>{i=0}^{R}{\sum<em>{j=1}^{M}{f</em>{R-i,Tx-10j,Ty-10j} \times g_{i,j} \times \binom{R}{i} \times (-1)^i}}$$</p>
+<h2 id="Problem-10"><a href="#Problem-10" class="headerlink" title="Problem 10"></a>Problem 10</h2><p>先降序排序.<br>$f<em>{i,j}$表示已经放进去了i个数,激动值为j的方案数.<br>$f</em>{i+1,j+1}+=f<em>{i,j}$<br>$f</em>{i+1,j}+=i\times f<em>{i,j}$<br>但是重复的不好处理.<br>所以$f</em>{i,j,0/1}$表示已经放进去了i个数,激动值为j,与当前数相等的数有没有放到过开头的方案数,最后答案除以一个组合数就可以了.</p>
+<h2 id="Problem-11"><a href="#Problem-11" class="headerlink" title="Problem 11"></a>Problem 11</h2><p>显然可以$O(2^100\times 100)$来暴力DP.<br>枚举第一个数选什么,最多只有3个质因数.<br>或者大于10的质数指数最大为1,把这些扣出来,剩下只剩2357,DP即可.</p>
+<h2 id="a"><a href="#a" class="headerlink" title="a"></a>a</h2><p>最暴力的DP是设$f<em>{i,j}$表示还剩i,上次减的是j,先手是否能赢.<br>重新设一下,令$f</em>{i}$表示当前还剩i个,这一步最少减去多少我能赢.如果减去的个数大于等于s,那么一定输咯.</p>
+<h2 id="b-Codeforces-434C"><a href="#b-Codeforces-434C" class="headerlink" title="b (Codeforces 434C)"></a>b (Codeforces 434C)</h2><p>AC自动机+数位DP裸题.</p>
+<h2 id="c"><a href="#c" class="headerlink" title="c"></a>c</h2><p>令$f_{i,j,a,b,c,d,0/1}$表示前i个,总代价为j,….,有无队长的最大收益,然后把所有的按收益降序排序,以保障队长不同方案相同.统计答案即可.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://harmoniikaa.top/2017/04/28/清北集训Day1-动态规划/" data-id="cj8u1zr4e000ytqxfxp3wgv84" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博弈论/">博弈论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/清北集训/">清北集训</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/29/清北集训Day2-字符串/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          清北集训Day2 字符串
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/25/GYM-100365/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">GYM 100365</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AC自动机/">AC自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HASH/">HASH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/KMP/">KMP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Z-BOX/">Z-BOX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分块/">分块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/分治/">分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态点分治/">动态点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/匈牙利算法/">匈牙利算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博弈论/">博弈论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀数组/">后缀数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀自动机/">后缀自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回文自动机/">回文自动机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/堆/">堆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/容斥原理/">容斥原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展欧几里得/">拓展欧几里得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓扑排序/">拓扑排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数论/">数论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最大流/">最大流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小割/">最小割</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/构造/">构造</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树形DP/">树形DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树链剖分/">树链剖分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/清北集训/">清北集训</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/点分治/">点分治</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线性基/">线性基</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫比乌斯反演/">莫比乌斯反演</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/费用流/">费用流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/辛普森积分/">辛普森积分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递推/">递推</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AC自动机/" style="font-size: 10px;">AC自动机</a> <a href="/tags/HASH/" style="font-size: 10px;">HASH</a> <a href="/tags/KMP/" style="font-size: 10px;">KMP</a> <a href="/tags/Z-BOX/" style="font-size: 10px;">Z-BOX</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分治/" style="font-size: 10px;">分治</a> <a href="/tags/动态点分治/" style="font-size: 10px;">动态点分治</a> <a href="/tags/动态规划/" style="font-size: 17.5px;">动态规划</a> <a href="/tags/匈牙利算法/" style="font-size: 10px;">匈牙利算法</a> <a href="/tags/博弈论/" style="font-size: 15px;">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 10px;">后缀数组</a> <a href="/tags/后缀自动机/" style="font-size: 10px;">后缀自动机</a> <a href="/tags/回文自动机/" style="font-size: 12.5px;">回文自动机</a> <a href="/tags/堆/" style="font-size: 10px;">堆</a> <a href="/tags/容斥原理/" style="font-size: 10px;">容斥原理</a> <a href="/tags/平衡树/" style="font-size: 10px;">平衡树</a> <a href="/tags/拓展欧几里得/" style="font-size: 10px;">拓展欧几里得</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/数论/" style="font-size: 12.5px;">数论</a> <a href="/tags/最大流/" style="font-size: 10px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/构造/" style="font-size: 10px;">构造</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 10px;">树链剖分</a> <a href="/tags/模拟/" style="font-size: 15px;">模拟</a> <a href="/tags/清北集训/" style="font-size: 20px;">清北集训</a> <a href="/tags/点分治/" style="font-size: 10px;">点分治</a> <a href="/tags/线性基/" style="font-size: 10px;">线性基</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/莫比乌斯反演/" style="font-size: 10px;">莫比乌斯反演</a> <a href="/tags/计算几何/" style="font-size: 15px;">计算几何</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/费用流/" style="font-size: 10px;">费用流</a> <a href="/tags/辛普森积分/" style="font-size: 10px;">辛普森积分</a> <a href="/tags/递推/" style="font-size: 12.5px;">递推</a> <a href="/tags/随笔/" style="font-size: 12.5px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/16/GYM-Quest-Form/">GYM Quest Form</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/13/Hackerrank-GCD-Product/">Hackerrank GCD Product</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/11/Codeforces-814E/">Codeforces 814E</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/02/UOJ-103/">UOJ 103</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/02/回文自动机初探/">回文自动机初探</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
