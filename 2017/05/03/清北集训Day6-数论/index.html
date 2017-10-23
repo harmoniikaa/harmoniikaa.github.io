@@ -71,6 +71,8 @@
     			
             
     			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友情链接</a>
+    			
             
     			
             
@@ -82,7 +84,7 @@
 		        
 					<a class="qq" target="_blank" href="/914432307" title="qq"><i class="icon-qq"></i></a>
 		        
-					<a class="mail" target="_blank" href="/dms20000328@gmail.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="/harmoniikaa@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -121,7 +123,7 @@
 			        
 						<a class="qq" target="_blank" href="/914432307" title="qq"><i class="icon-qq"></i></a>
 			        
-						<a class="mail" target="_blank" href="/dms20000328@gmail.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="/harmoniikaa@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -358,6 +360,8 @@ MathJax.Hub.Queue(function() {
       
     
       
+      
+      
     
       
     
@@ -367,9 +371,11 @@ MathJax.Hub.Queue(function() {
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友情链接</a></li>
       
         
       
@@ -396,11 +402,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">递推</a>
+                <a href="javascript:void(0)" class="js-tag color3">分块</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">分块</a>
+                <a href="javascript:void(0)" class="js-tag color3">递推</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,15 +538,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">后缀自动机</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">贪心</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分治</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">后缀自动机</a>
               </li>
             
             <div class="clearfix"></div>
@@ -586,6 +592,22 @@ MathJax.Hub.Queue(function() {
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://dozbear.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>dozbear</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://blog.csdn.net/LOI_Shirley" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>LOI_Shirley</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     
